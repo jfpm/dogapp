@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.equipo10.dogapp"
-        minSdk = 34
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -35,6 +35,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        dataBinding = true
+    }
+
 }
 
 dependencies {
@@ -92,6 +96,6 @@ dependencies {
 
     //Biometría
     implementation ("androidx.biometric:biometric:1.1.0")
-    implementation ("androix.appcompat:appcompat:1.4.1")
+
 
 }
