@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
     app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.equipo10.dogapp.view.fragment.LoginFragment"
-        android:label="LoginFragment" />
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_adminCitasFragment"
+            app:destination="@id/adminCitasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminCitasFragment"
+        android:name="com.equipo10.dogapp.AdminCitasFragment"
+        android:label="fragment_admin_citas"
+        tools:layout="@layout/fragment_admin_citas" />
 </navigation>
