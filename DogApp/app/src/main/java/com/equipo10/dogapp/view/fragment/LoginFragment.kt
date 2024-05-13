@@ -34,10 +34,11 @@ import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import android.provider.Settings
+import android.widget.ImageView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
-
+import com.bumptech.glide.Glide
 
 
 class LoginFragment<KeyGenParameterSpec> : Fragment() {
@@ -57,6 +58,8 @@ class LoginFragment<KeyGenParameterSpec> : Fragment() {
         binding = FragmentLoginBinding.inflate(inflater)
         binding.lifecycleOwner = this
 
+
+
         binding.btnBiometria.setOnClickListener{
             checkDeviceHasBiometric()
         }
@@ -66,7 +69,14 @@ class LoginFragment<KeyGenParameterSpec> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getbiometricSupport()
+        // Utilizamos el binding para acceder al ImageView
+        val imageView: ImageView = binding.btnBiometria
 
+        // Cargar y mostrar el GIF usando Glide
+        Glide.with(this)
+            .asGif()
+            .load(R.drawable.biometria)
+            .into(imageView)
     }
 
     fun getbiometricSupport(){
@@ -76,13 +86,11 @@ class LoginFragment<KeyGenParameterSpec> : Fragment() {
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)
                     notifyUser("Authentication error: $errString")
-                    //Toast.makeText(FragmentA, "Authentication error: $errString", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
                     notifyUser("Authentication exito!")
-                    //Toast.makeText(this@FragmentA,"Authentication exito!", Toast.LENGTH_LONG).show()
                     findNavController().navigate(R.id.action_loginFragment_to_adminCitasFragment)
                 }
 
@@ -95,7 +103,7 @@ class LoginFragment<KeyGenParameterSpec> : Fragment() {
         promptInfo = BiometricPrompt.PromptInfo.Builder()
             .setTitle("Autenticaciòn con Biometria")
             .setSubtitle("ingrese su huella digital aqui")
-            .setNegativeButtonText("Cancelar")
+            .setNegativeButtonText("Cancela")
             .build()
 
         binding.btnBiometria.setOnClickListener {
