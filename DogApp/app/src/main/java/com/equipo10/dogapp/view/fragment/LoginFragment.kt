@@ -85,25 +85,25 @@ class LoginFragment<KeyGenParameterSpec> : Fragment() {
             object : BiometricPrompt.AuthenticationCallback() {
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)
-                    notifyUser("Authentication error: $errString")
+                    notifyUser("Error autenticación: $errString")
                 }
 
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
-                    notifyUser("Authentication exito!")
+                    notifyUser("Autenticación exitosa!")
                     findNavController().navigate(R.id.action_loginFragment_to_adminCitasFragment)
                 }
 
                 override fun onAuthenticationFailed() {
                     super.onAuthenticationFailed()
-                    notifyUser("Authentication failed")
+                    notifyUser("Autenticacón fallida")
                 }
             })
 
         promptInfo = BiometricPrompt.PromptInfo.Builder()
             .setTitle("Autenticaciòn con Biometria")
-            .setSubtitle("ingrese su huella digital aqui")
-            .setNegativeButtonText("Cancela")
+            .setSubtitle("ingrese su huella digital")
+            .setNegativeButtonText("Cancelar")
             .build()
 
         binding.btnBiometria.setOnClickListener {
