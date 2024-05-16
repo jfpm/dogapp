@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.equipo10.dogapp"
-        minSdk = 34
+        minSdk = 29
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -35,6 +35,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        dataBinding = true
+    }
+
 }
 
 dependencies {
@@ -63,7 +67,7 @@ dependencies {
     //cardView
     implementation("androidx.cardview:cardview:1.0.0")
     //RecyclerView
-    implementation("androidx.recyclerview:recyclerview:1.3.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 
     //corrutinas
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
@@ -91,7 +95,6 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.12.0")
 
     //Biometría
-    implementation ("androidx.biometric:biometric:1.1.0")
-    implementation ("androix.appcompat:appcompat:1.4.1")
+    implementation("androidx.biometric:biometric:1.1.0")
 
 }
