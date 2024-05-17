@@ -23,21 +23,19 @@ class BiometricAuthViewModel: ViewModel() {
 
     fun startBiometricAuthentication() {
         viewModelScope.launch {
-            // Simulamos la autenticación biométrica exitosa después de un breve retraso
             kotlinx.coroutines.delay(2000)
             _biometricAuthState.value = BiometricAuthState.Success
         }
     }
 
     fun openBiometricSettings() {
-        // Abre la configuración de biometría del dispositivo
+
         val intent = Intent(Settings.ACTION_BIOMETRIC_ENROLL).apply {
             putExtra(
                 Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
                 BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.DEVICE_CREDENTIAL
             )
         }
-        // No necesitamos iniciar una actividad con un resultado aquí
     }
 
     fun sendErrorMessage(message: String) {

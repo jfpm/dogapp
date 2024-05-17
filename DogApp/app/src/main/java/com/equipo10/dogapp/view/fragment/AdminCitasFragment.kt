@@ -17,13 +17,10 @@ import com.equipo10.dogapp.R
 import com.equipo10.dogapp.databinding.FragmentAdminCitasBinding
 import com.equipo10.dogapp.view.adapter.ScheduleAdapter
 import com.equipo10.dogapp.viewmodel.ScheduleViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AdminCitasFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class AdminCitasFragment : Fragment() {
 
     private lateinit var binding: FragmentAdminCitasBinding
@@ -55,7 +52,8 @@ class AdminCitasFragment : Fragment() {
     }
 
     private fun observadorViewmodel(){
-
+        observerListSchedule()
+        observerProgress()
     }
 
     private fun observerListSchedule(){

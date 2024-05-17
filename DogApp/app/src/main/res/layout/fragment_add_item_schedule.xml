@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/edit_text_border_selector"
-            android:hint="Nombre de la Mascota"
+            android:hint="@string/nombre_de_la_mascota"
             android:inputType="text"
             android:maxLength="15"
             android:maxLines="1"
@@ -63,14 +63,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/idtoolbar"
             android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginLeft="15dp"
+            android:padding="15dp"/>
 
         <AutoCompleteTextView
             android:id="@+id/addRaza"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Raza"
+            android:hint="@string/raza"
             android:textColorHint="@color/grey"
             android:background="@drawable/edit_text_border_selector"
             android:maxLines="1"
@@ -82,7 +83,91 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginLeft="15dp"
+            android:padding="15dp"/>
+
+        <EditText
+            android:id="@+id/addNameOwner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edit_text_border_selector"
+            android:hint="@string/nombre_del_propietario"
+            android:inputType="text"
+            android:maxLength="15"
+            android:maxLines="1"
+            android:paddingStart="8dp"
+            android:paddingEnd="12dp"
+            android:textColorHint="@color/grey"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addRaza"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:padding="15dp"/>
+
+        <EditText
+            android:id="@+id/addPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edit_text_border_selector"
+            android:hint="@string/telefono"
+            android:inputType="number"
+            android:maxLength="15"
+            android:maxLines="1"
+            android:paddingStart="8dp"
+            android:paddingEnd="12dp"
+            android:textColorHint="@color/grey"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addNameOwner"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            tools:ignore="TextFields"
+            android:padding="15dp"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/addSymptomsAutoComplete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edit_text_border_selector"
+            android:hint="@string/sintomas"
+            android:paddingStart="8dp"
+            android:paddingEnd="12dp"
+            android:textColorHint="@color/grey"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addPhone"
+            tools:ignore="TextFields"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:padding="15dp"/>
+
+        <Button
+            android:id="@+id/btnSaveAppointment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/button_background"
+            android:drawableStart="@drawable/ic_save"
+            android:drawablePadding="8dp"
+            android:enabled="false"
+            android:padding="15dp"
+            android:text="@string/guardar_cita"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addPhone" />
+
 
 
 

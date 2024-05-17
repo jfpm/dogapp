@@ -13,6 +13,6 @@ data class Schedule(
     val name: String,// 15 carac
     val race: String,//raza
     val name_owner: String,//propietario nombre 30 caracteres
-    val phone: Int,//teléfono 10 carac
+    val phone: String,//teléfono 10 carac
     val sysptoms: String, //Sintomas
 )

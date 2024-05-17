@@ -8,4 +8,20 @@
     <string name="button_add">Boton para agendar nueva cita canina</string>
     <string name="back">Icono para retroceder a pantalla anterior</string>
     <string name="nueva_cita">Nueva Cita</string>
+    <string name="nombre_del_propietario">Nombre del propietario</string>
+    <string name="nombre_de_la_mascota">Nombre de la Mascota</string>
+    <string name="raza">Raza</string>
+    <string name="telefono">Teléfono</string>
+    <string name="sintomas">Sintomas</string>
+    <string name="guardar_cita">Guardar Cita</string>
+
+
+    <string-array name="symptoms_array">
+        <item>Sólo duerme</item>
+        <item>No come</item>
+        <item>Fractura extremidad</item>
+        <item>Tiene pulgas</item>
+        <item>Tiene garrapatas</item>
+        <item>Bota demasiado pelo</item>
+    </string-array>
 </resources>
