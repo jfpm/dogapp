@@ -8,10 +8,10 @@ Sprint 1
  DogApp  Agenda de citas para Mascotas
 
 # Presentado por:
- Gilberth Adrian Banguero - 2110015 
- Herson Steven Tangarife - 20100 
- Jhon Freddy Popo - 20100 
- Yilver Julian Tello - 2110019
+ ## Gilberth Adrian Banguero - 2110015 
+ ## Herson Steven Tangarife - 20100 
+ ## Jhon Freddy Popo - 20100 
+ ## Yilver Julian Tello - 2110019
 
 # Presentado a:
  Ing. Walter Medina 
