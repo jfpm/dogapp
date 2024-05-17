@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.equipo10.dogapp.viewmodel.ScheduleViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor"
+        android:padding="20dp"
+        tools:context=".view.fragment.AddItemScheduleFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/idtoolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circular_background_item"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            app:title="">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_arrow"
+                android:contentDescription="@string/back"
+                android:layout_gravity="start"
+                android:padding="35dp"
+                android:layout_marginStart="25dp"
+                android:onClick="onBackClicked"
+                app:tint="@color/pink"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/nueva_cita"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="28sp"/>
+        </androidx.appcompat.widget.Toolbar>
+        
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</layout>

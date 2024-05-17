@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -41,6 +42,8 @@ class AddItemScheduleFragment : Fragment() {
         setupAutoCompleteTextView()
         controladores()
         setupTextWatchers()
+
+
     }
 
     private fun setupAutoCompleteTextView() {
