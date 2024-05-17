@@ -61,6 +61,7 @@ class LoginFragment<KeyGenParameterSpec> : Fragment() {
             .asGif()
             .load(R.drawable.biometria)
             .into(imageView)
+
     }
 
     fun getbiometricSupport(){
