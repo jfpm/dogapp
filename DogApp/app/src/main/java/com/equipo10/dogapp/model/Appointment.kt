@@ -19,7 +19,7 @@ data class Appointment(
     val name_owner: String,
 
     @SerializedName("phone")
-    val phone: Int,
+    val phone: String,
 
     @SerializedName("sysptoms")
     val sysptoms: Int
