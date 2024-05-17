@@ -24,4 +24,7 @@ interface ScheduleDao {
     @Update
     suspend fun updateSchedule(schedule: Schedule)
 
+    @Query("SELECT * FROM Schedule WHERE id = :scheduleId")
+    suspend fun getScheduleById(scheduleId: Int): Schedule?
+
 }

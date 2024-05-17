@@ -15,8 +15,8 @@ import javax.inject.Inject
 class ScheduleViewModel  @Inject constructor(
     private val scheduleRepository: ScheduleRepository
 ) : ViewModel() {
-    private val _listSchedule = MutableLiveData<MutableList<Schedule>>()
 
+    private val _listSchedule = MutableLiveData<MutableList<Schedule>>()
     val listSchedule: LiveData<MutableList<Schedule>> get() = _listSchedule
 
     private val _progresSate = MutableLiveData(false)
@@ -25,6 +25,7 @@ class ScheduleViewModel  @Inject constructor(
     //almacenar las citas en la agenda
     private val _listAppointment = MutableLiveData<MutableList<Appointment>>()
     val listAppointment: LiveData<MutableList<Appointment>> = _listAppointment
+
     fun  saveSchedule(schedule: Schedule){
         viewModelScope.launch {
             _progresSate.value = true

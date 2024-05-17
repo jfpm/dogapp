@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_adminCitasFragment_to_addItemScheduleFragment"
             app:destination="@id/addItemScheduleFragment" />
+        <action
+            android:id="@+id/action_adminCitasFragment_to_itemDetailsSchuleFragment"
+            app:destination="@id/itemDetailsSchuleFragment" />
     </fragment>
     <fragment
         android:id="@+id/addItemScheduleFragment"
@@ -29,6 +32,15 @@
         tools:layout="@layout/fragment_add_item_schedule" >
         <action
             android:id="@+id/action_addItemScheduleFragment_to_adminCitasFragment3"
+            app:destination="@id/adminCitasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemDetailsSchuleFragment"
+        android:name="com.equipo10.dogapp.view.fragment.ItemDetailsSchuleFragment"
+        android:label="fragment_item_details_schule"
+        tools:layout="@layout/fragment_item_details_schule" >
+        <action
+            android:id="@+id/action_itemDetailsSchuleFragment_to_adminCitasFragment"
             app:destination="@id/adminCitasFragment" />
     </fragment>
 </navigation>
