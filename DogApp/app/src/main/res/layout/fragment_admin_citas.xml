@@ -36,27 +36,15 @@
 
             <TextView
                 android:id="@+id/tvTitulo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="166dp"
+                android:layout_height="69dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="22dp"
                 android:layout_marginTop="40dp"
                 android:text="@string/title_admin_citas"
+                android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="25sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvTitulo1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvTitulo"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="63dp"
-                android:layout_marginTop="-3dp"
-                android:text="@string/title_admin_citas_2"
-                android:textColor="@color/white"
-                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -72,6 +60,7 @@
                     android:id="@+id/logo"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:scaleType="fitEnd"
                     android:src="@drawable/logo_organizado"
                     android:contentDescription="@string/dogapp_logo_desc" />
 
