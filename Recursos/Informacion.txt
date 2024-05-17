@@ -1,0 +1,205 @@
+package com.equipo10.dogapp.view.fragment
+
+import android.annotation.SuppressLint
+import android.app.KeyguardManager
+import android.content.Context
+import android.content.pm.PackageManager
+import android.hardware.biometrics.BiometricPrompt
+import android.os.Build
+import android.os.Bundle
+import android.os.CancellationSignal
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
+import com.equipo10.dogapp.AdminCitasFragment
+import com.equipo10.dogapp.databinding.FragmentLoginBinding
+
+class LoginFragment : Fragment() {
+
+    private lateinit var binding: FragmentLoginBinding
+
+    private var cancellationSignal: CancellationSignal? = null
+
+    @RequiresApi(Build.VERSION_CODES.P)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentLoginBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        binding.btnBiometria.setOnClickListener{
+            configurationBiometricPromt()
+        }
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+
+    private val authenticationCallback: BiometricPrompticPrompt.AuthenticationCallback
+        @SuppressLint("SupportAnnotationUsage")
+        get() =
+            @RequiresApi(Build.VERSION_CODES.P)
+            object : BiometricPrompt.AuthenticationCallback() {
+                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                    super.onAuthenticationSucceeded(result)
+                    startActivity(Intent(this@LoginFragment, AdminCitasFragment::class.java))
+                }
+
+                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                    super.onAuthenticationError(errorCode, errString)
+                }
+            }
+
+    private fun showToast(message: String){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.P)
+    private fun configurationBiometricPromt(){
+        val biometricPrompt = BiometricPrompt.Builder(this)
+            .setTitle("-------")
+            .setSubtitle("//------")
+            .setDescription("///////")
+            .setNegativeButton("Cancel", this.mainExecutor) {_, _ ->
+                showToast("Autenthication cancelled")
+
+            }.build()
+        biometricPrompt.authenticate(getCancellationSignal(), mainExecutor, authenticationCallback)
+    }
+
+    private fun getCancellationSignal(): CancellationSignal {
+        cancellationSignal = CancellationSignal()
+        cancellationSignal?.setOnCancelListener {
+            showToast("Autenticacion fue cancelado por el usuario")
+        }
+
+        return cancellationSignal as CancellationSignal
+    }
+
+    private fun checkBiometricSupport(): Boolean {
+        val keyguardManager = getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+        if(!keyguardManager.isKeyguardSecure){
+            showToast("Autenticacion no ha sido habilitada en su configuraciòn")
+            return false
+        }
+        if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.USE_BIOMETRIC) != PackageManager.PERMISSION_GRANTED){
+            showToast("Fingerprint authentication permission is not enable")
+            return false
+        }
+        return if (packageManager.)
+    }
+
+}
+
+
+----------------------------------------------------------------------------------------------------
+package com.equipo10.dogapp.view.fragment
+
+import android.app.KeyguardManager
+import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
+import android.os.Bundle
+import android.os.CancellationSignal
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.biometric.BiometricPrompt
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
+import com.equipo10.dogapp.AdminCitasFragment
+import com.equipo10.dogapp.databinding.FragmentLoginBinding
+
+class LoginFragment : Fragment() {
+
+    private lateinit var binding: FragmentLoginBinding
+
+    private var cancellationSignal: CancellationSignal? =  null
+    private val authenticationCallback: BiometricPrompt.AuthenticationCallback
+        get() =
+            @RequiresApi(Build.VERSION_CODES.P)
+            object : BiometricPrompt.AuthenticationCallback(){
+                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                    super.onAuthenticationError(errorCode, errString)
+                    notifyUser("Authentication error: $errString")
+                }
+
+                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                    super.onAuthenticationSucceeded(result)
+                    notifyUser("Authentication success!")
+                    startActivity(/* intent = */ Intent(this@LoginFragment, AdminCitasFragment::class.java))
+                }
+            }
+
+    @RequiresApi(Build.VERSION_CODES.P)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentLoginBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+
+        checkBiometricSupport()
+
+        binding.btnBiometria.setOnClickListener{
+            val biometricPrompt = BiometricPrompt.Builder(this)
+                .setTitle("Autenticación con Biometría")
+                .setSubtitle("Ingrese su huella digital")
+                .setDescription("Toque el sensor de huellas digitales")
+                .setNegativeButton("CANCEL", this.mainExecutor, DialogInterface.OnClickListener { dialog, which ->
+                    notifyUser("Autenticación cancelada")
+                }).build()
+
+            biometricPrompt.authenticate(getCancellaSignal(), mainExecutor, authenticationCallback)
+
+        }
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+
+    private fun notifyUser(message: String){
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun getCancellaSignal(): CancellationSignal {
+        cancellationSignal = CancellationSignal()
+        cancellationSignal?.setOnCancelListener {
+            notifyUser("El usuario ha cancelado la autenticación")
+        }
+        return cancellationSignal as CancellationSignal
+    }
+
+    private fun checkBiometricSupport(): Boolean {
+        val keyguardManager : KeyguardManager = getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+
+        if(!keyguardManager.isKeyguardSecure){
+            notifyUser("La autenticación por huella dactilar no se ha habilitado en la configuración")
+            return false
+        }
+        if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.USE_BIOMETRIC) != PackageManager.PERMISSION_GRANTED){
+            notifyUser("El permiso de autenticación por huella dactilar no está habilitado")
+            return false
+        }
+        return if(packageManager.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT)){
+            return true
+        }else true
+    }
+
+
+
+}
