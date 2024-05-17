@@ -35,7 +35,7 @@
             android:id="@+id/fileTitle"
             android:layout_width="272dp"
             android:layout_height="241dp"
-            android:background="@drawable/freepik_export_2024050719291717sc"
+            android:background="@drawable/logo_organizado"
             app:layout_constraintBottom_toBottomOf="@id/txtTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.833"

@@ -69,7 +69,7 @@
                     android:id="@+id/logo"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/freepik_export_2024050719291717sc"
+                    android:src="@drawable/logo_organizado"
                     android:contentDescription="@string/dogapp_logo_desc" />
 
                 <TextView
@@ -98,10 +98,10 @@
 
         <!-- Floating Action Button -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fbagregar"
+            android:id="@+id/btnagendarcita"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="button add"
+            android:contentDescription="@string/button_add"
             android:layout_margin="16dp"
             android:backgroundTint="@color/redLigth"
             android:src="@drawable/ic_add"

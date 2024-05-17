@@ -5,4 +5,5 @@
     <string name="title_admin_citas">Administrador</string>
     <string name="title_admin_citas_2">de citas</string>
     <string name="dogapp_logo_desc">Logo principal de la aplicación</string>
+    <string name="button_add">Boton para agendar nueva cita canina</string>
 </resources>

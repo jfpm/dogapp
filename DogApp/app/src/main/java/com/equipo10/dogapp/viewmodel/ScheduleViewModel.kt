@@ -38,7 +38,7 @@ class ScheduleViewModel  @Inject constructor(
     }
 
 
-    fun getListSchedule(schedule: Schedule){
+    fun getListSchedule(){
         viewModelScope.launch {
             _progresSate.value = true
             try {

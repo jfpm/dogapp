@@ -17,5 +17,14 @@
         android:id="@+id/adminCitasFragment"
         android:name="com.equipo10.dogapp.view.fragment.AdminCitasFragment"
         android:label="fragment_admin_citas"
-        tools:layout="@layout/fragment_admin_citas" />
+        tools:layout="@layout/fragment_admin_citas" >
+        <action
+            android:id="@+id/action_adminCitasFragment_to_addItemSchedule"
+            app:destination="@id/addItemSchedule" />
+    </fragment>
+    <fragment
+        android:id="@+id/addItemSchedule"
+        android:name="com.equipo10.dogapp.AddItemSchedule"
+        android:label="fragment_add_item_schedule"
+        tools:layout="@layout/fragment_add_item_schedule" />
 </navigation>
