@@ -98,6 +98,8 @@ dependencies {
     //Biometría
     implementation("androidx.biometric:biometric:1.1.0")
 
+    //Dagger hilt
+    implementation("com.google.dagger:hilt-android:2.47")
     kapt("com.google.dagger:hilt-android-compiler:2.47")
 
 }
