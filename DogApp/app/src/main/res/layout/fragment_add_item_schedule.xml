@@ -46,132 +46,170 @@
                     android:textSize="28sp"/>
             </androidx.appcompat.widget.Toolbar>
 
-            <EditText
-                android:id="@+id/addName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_border_selector"
-                android:hint="@string/nombre_de_la_mascota"
-                android:inputType="text"
-                android:maxLength="15"
-                android:maxLines="1"
-                android:paddingStart="8dp"
-                android:paddingEnd="12dp"
-                android:textColorHint="@color/grey"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/idtoolbar"
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
-                android:padding="15dp"
-                android:gravity="center_vertical"/>
 
-            <AutoCompleteTextView
-                android:id="@+id/addRaza"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addName1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="20dp"
+                android:hint="@string/nombre_de_la_mascota"
+                android:textColorHint="@color/grey"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/idtoolbar">
+
+                <EditText
+                    android:id="@+id/addName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="15"
+                    android:maxLines="1"
+                    android:textSize="16sp"
+                    android:padding="15dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="12dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addRaza1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
                 android:layout_marginTop="20dp"
                 android:hint="@string/raza"
                 android:textColorHint="@color/grey"
-                android:background="@drawable/edit_text_border_selector"
-                android:maxLines="1"
-                android:inputType="text"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:textSize="16sp"
-                app:layout_constraintTop_toBottomOf="@id/addName"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/addName1"
                 android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
-                android:padding="15dp"/>
+                android:layout_marginLeft="15dp">
 
-            <EditText
-                android:id="@+id/addNameOwner"
+                <AutoCompleteTextView
+                    android:id="@+id/addRaza"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:textSize="16sp"
+                    android:padding="15dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="12dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addNameOwner1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_border_selector"
                 android:hint="@string/nombre_del_propietario"
-                android:inputType="text"
-                android:maxLength="15"
-                android:maxLines="1"
-                android:paddingStart="8dp"
-                android:paddingEnd="12dp"
                 android:textColorHint="@color/grey"
-                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/addRaza1"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/addRaza"
                 android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
-                android:padding="15dp"/>
+                android:layout_marginLeft="15dp">
 
-            <EditText
-                android:id="@+id/addPhone"
+                <EditText
+                    android:id="@+id/addNameOwner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="15"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="12dp"
+                    android:textSize="16sp"
+                    android:padding="15dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addPhone1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_border_selector"
                 android:hint="@string/telefono"
-                android:inputType="number"
-                android:maxLength="15"
-                android:maxLines="1"
-                android:paddingStart="8dp"
-                android:paddingEnd="12dp"
                 android:textColorHint="@color/grey"
-                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/addNameOwner1"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/addNameOwner"
                 android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
-                tools:ignore="TextFields"
-                android:padding="15dp"/>
+                android:layout_marginLeft="15dp">
 
-            <AutoCompleteTextView
-                android:id="@+id/addSymptomsAutoComplete"
-                android:layout_width="0dp"
+                <EditText
+                    android:id="@+id/addPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="15"
+                    android:maxLines="1"
+                    android:textSize="16sp"
+                    tools:ignore="TextFields"
+                    android:padding="15dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="12dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addSintomas1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="180dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_border_selector"
-                android:hint="@string/sintomas"
-                android:paddingStart="8dp"
-                android:paddingEnd="12dp"
+
                 android:textColorHint="@color/grey"
-                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/addPhone"
-                tools:ignore="TextFields"
+                app:layout_constraintTop_toBottomOf="@id/addPhone1"
                 android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
-                android:padding="15dp"/>
+                android:layout_marginLeft="15dp">
+
+                <Spinner
+                    android:id="@+id/addSintomas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    tools:ignore="TextFields"
+                    android:padding="15dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="12dp"
+                    android:spinnerMode="dropdown"
+                    android:prompt="@string/sintomas"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <Button
                 android:id="@+id/btnSaveAppointment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="90dp"
+                android:layout_marginTop="20dp"
                 android:drawablePadding="8dp"
                 android:enabled="false"
                 android:padding="15dp"
                 android:text="@string/guardar_cita"
-                android:textColor="@android:color/white"
                 android:backgroundTint="@color/pink1"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:icon="@drawable/ic_save"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/addPhone" />
-
-
+                app:layout_constraintTop_toBottomOf="@id/addSintomas1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
