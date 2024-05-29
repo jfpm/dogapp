@@ -1,5 +1,6 @@
 package com.equipo10.dogapp.repository
 
+import android.util.Log
 import com.equipo10.dogapp.data.ScheduleDao
 import com.equipo10.dogapp.model.Appointment
 import com.equipo10.dogapp.model.Schedule
@@ -13,8 +14,17 @@ class ScheduleRepository @Inject  constructor(
     private val apiService: ApiService
 ) {
     suspend fun  saveSchedule(schedule: Schedule){
-        withContext(Dispatchers.IO){
-            scheduleDao.saveSchedule(schedule)
+        // Verifica si la información del schedule no es nula y si cumple con ciertas condiciones antes de guardarlo
+        if (schedule.name.isNotEmpty() && schedule.race.isNotEmpty() && schedule.name_owner.isNotEmpty() && schedule.phone.isNotEmpty() && schedule.sysptoms.isNotEmpty()) {
+            withContext(Dispatchers.IO) {
+                scheduleDao.saveSchedule(schedule)
+            }
+            // Aquí puedes agregar un registro de éxito al registro de logs
+            Log.d("Repository", "Schedule saved successfully: $schedule")
+        } else {
+            // Aquí puedes manejar el caso en el que la información del schedule no sea válida
+            Log.e("Repository", "Invalid schedule information: $schedule")
+            throw IllegalArgumentException("Invalid schedule information")
         }
     }
 
@@ -34,5 +44,9 @@ class ScheduleRepository @Inject  constructor(
         withContext(Dispatchers.IO){
             scheduleDao.updateSchedule(schedule)
         }
+    }
+
+    suspend fun getScheduleById(scheduleId: Int): Schedule? {
+        return scheduleDao.getScheduleById(scheduleId)
     }
 }

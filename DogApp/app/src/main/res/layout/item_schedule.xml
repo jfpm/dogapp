@@ -10,7 +10,7 @@
         android:paddingVertical="5dp">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvInventory"
+            android:id="@+id/viewSchedule"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,44 +53,45 @@
 
 
                 <TextView
-                    android:id="@+id/tvPetName"
+                    android:id="@+id/tvName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:layout_marginLeft="10dp"
-                    android:text="Nombre de la mascota"
+                    android:text="@string/nombre_de_la_mascota"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/tvSymptomDescription"
-                    app:layout_constraintEnd_toStartOf="@+id/tvTurno"
+                    app:layout_constraintBottom_toTopOf="@+id/tvSymptom"
+                    app:layout_constraintEnd_toStartOf="@+id/tvId"
                     app:layout_constraintHorizontal_bias="0.235"
                     app:layout_constraintStart_toEndOf="@+id/cardivPetImage"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <!-- Descripción del síntoma -->
                 <TextView
-                    android:id="@+id/tvSymptomDescription"
+                    android:id="@+id/tvSymptom"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:layout_marginLeft="10dp"
-                    android:text="Descripción del síntoma"
+                    android:text="@string/descripci_n_del_s_ntoma"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tvTurno"
+                    app:layout_constraintEnd_toStartOf="@+id/tvId"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toEndOf="@+id/cardivPetImage"
-                    app:layout_constraintTop_toBottomOf="@+id/tvPetName" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
                 <!-- Turno de atención (ID autogenerado) -->
                 <TextView
-                    android:id="@+id/tvTurno"
+                    android:id="@+id/tvId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="ID"
+                    android:text="#"
                     android:textSize="16sp"
                     android:textStyle="bold"
+                    android:textColor="@color/redLigth"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
