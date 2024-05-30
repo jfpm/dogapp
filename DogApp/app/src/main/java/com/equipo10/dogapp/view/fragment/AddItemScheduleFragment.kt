@@ -20,12 +20,17 @@ import com.equipo10.dogapp.model.Schedule
 import com.equipo10.dogapp.viewmodel.ScheduleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import android.widget.Spinner;
+import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import com.equipo10.dogapp.viewmodel.DogBreedsViewModel
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AddItemScheduleFragment : Fragment() {
 
     private lateinit var binding: FragmentAddItemScheduleBinding
     private val scheduleViewModel: ScheduleViewModel by viewModels()
+    private val dogBreedsViewModel: DogBreedsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +48,7 @@ class AddItemScheduleFragment : Fragment() {
         setupAutoCompleteTextView()
         controladores()
         setupTextWatchers()
-
+        observeBreeds()
 
     }
 
@@ -52,6 +57,20 @@ class AddItemScheduleFragment : Fragment() {
         Log.d("Info", symptoms.toString())
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, symptoms)
         binding.addSintomas.setAdapter(adapter)
+    }
+
+    private fun observeBreeds() {
+        dogBreedsViewModel.breeds.observe(viewLifecycleOwner, Observer { breeds ->
+            val adapter = ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_dropdown_item_1line,
+                breeds
+            )
+            binding.addRaza.setAdapter(adapter)
+        })
+        viewLifecycleOwner.lifecycleScope.launch {
+            dogBreedsViewModel.fetchBreeds()
+        }
     }
 
     private fun controladores(){
@@ -69,17 +88,21 @@ class AddItemScheduleFragment : Fragment() {
             binding.addName,
             binding.addRaza,
             binding.addNameOwner,
-            binding.addPhone,
-            binding.addSintomas
+            binding.addPhone
         )
 
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.btnSaveAppointment.isEnabled = requiredFields.all { it.toString().isNotEmpty() }
+                binding.btnSaveAppointment.isEnabled = requiredFields.all { it.text.isNotEmpty() }
             }
+
             override fun afterTextChanged(s: Editable?) {}
         }
+
+        // Agregar el TextWatcher a cada EditText
+        requiredFields.forEach { it.addTextChangedListener(textWatcher) }
     }
 
     private fun saveSchedule(){
@@ -87,14 +110,20 @@ class AddItemScheduleFragment : Fragment() {
         val race: String = binding.addRaza.text.toString()
         val name_owner: String = binding.addNameOwner.text.toString()
         val phone: String = binding.addPhone.text.toString()
-        val sysptoms: String = binding.addSintomas.toString()
+        val sysptoms: String = binding.addSintomas.selectedItem.toString();
 
-        val schedule = Schedule(name = name, race = race, name_owner = name_owner, phone = phone,  sysptoms = sysptoms)
-        scheduleViewModel.saveSchedule(schedule)
+        if(sysptoms == "Síntomas") {
+            notifyUser("Selecciona un síntoma")
+        }else{
+            //guardar cita
+            val schedule = Schedule(name = name, race = race, name_owner = name_owner, phone = phone,  sysptoms = sysptoms)
+            scheduleViewModel.saveSchedule(schedule)
 
-        Log.d("Agendar", schedule.toString())
-        notifyUser("Cita agenda !!")
-        findNavController().popBackStack()
+            Log.d("Agendar", schedule.toString())
+            notifyUser("Cita agenda !!")
+            findNavController().popBackStack()
+        }
+
 
     }
 

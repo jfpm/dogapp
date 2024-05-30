@@ -18,6 +18,7 @@
 
 
     <string-array name="arraySintomas">
+        <item>Síntomas</item>
         <item>Sólo duerme</item>
         <item>No come</item>
         <item>Fractura extremidad</item>

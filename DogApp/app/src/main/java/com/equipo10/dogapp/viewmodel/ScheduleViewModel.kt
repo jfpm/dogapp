@@ -1,5 +1,7 @@
 package com.equipo10.dogapp.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,20 +9,20 @@ import androidx.lifecycle.viewModelScope
 import com.equipo10.dogapp.model.Appointment
 import com.equipo10.dogapp.model.Schedule
 import com.equipo10.dogapp.repository.ScheduleRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
-class ScheduleViewModel  @Inject constructor(
-    private val scheduleRepository: ScheduleRepository
-) : ViewModel() {
+
+class ScheduleViewModel(application: Application): AndroidViewModel(application) {
+
+    val context = getApplication<Application>()
+    private val scheduleRepository = ScheduleRepository(context)
 
     private val _listSchedule = MutableLiveData<MutableList<Schedule>>()
     val listSchedule: LiveData<MutableList<Schedule>> get() = _listSchedule
 
-    private val _progresSate = MutableLiveData(false)
-    val progresState: LiveData<Boolean> = _progresSate
+    private val _progresState = MutableLiveData(false)
+    val progresState: LiveData<Boolean> = _progresState
 
     //almacenar las citas en la agenda
     private val _listAppointment = MutableLiveData<MutableList<Appointment>>()
@@ -28,12 +30,12 @@ class ScheduleViewModel  @Inject constructor(
 
     fun  saveSchedule(schedule: Schedule){
         viewModelScope.launch {
-            _progresSate.value = true
+            _progresState.value = true
             try {
                 scheduleRepository.saveSchedule(schedule)
-                _progresSate.value = false
+                _progresState.value = false
             } catch (e: Exception){
-                _progresSate.value = false
+                _progresState.value = false
             }
         }
     }
@@ -41,36 +43,36 @@ class ScheduleViewModel  @Inject constructor(
 
     fun getListSchedule(){
         viewModelScope.launch {
-            _progresSate.value = true
+            _progresState.value = true
             try {
-                scheduleRepository.getListSchedule()
-                _progresSate.value = false
+                _listSchedule.value = scheduleRepository.getListSchedule()
+                _progresState.value = false
             }catch (e: Exception){
-                _progresSate.value = false
+                _progresState.value = false
             }
         }
     }
 
     fun deleteSchedule(schedule: Schedule){
         viewModelScope.launch {
-            _progresSate.value = true
+            _progresState.value = true
             try {
                 scheduleRepository.deleteSchedule(schedule)
-                _progresSate.value = false
+                _progresState.value = false
             }catch (e: Exception){
-                _progresSate.value = false
+                _progresState.value = false
             }
         }
     }
 
     fun updateSchedule(schedule: Schedule){
         viewModelScope.launch {
-            _progresSate.value = true
+            _progresState.value = true
             try {
                 scheduleRepository.updateSchedule(schedule)
-                _progresSate.value = false
+                _progresState.value = false
             } catch (e: Exception) {
-                _progresSate.value = false
+                _progresState.value = false
             }
         }
     }

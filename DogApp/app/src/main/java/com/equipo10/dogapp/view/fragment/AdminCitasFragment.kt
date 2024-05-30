@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.equipo10.dogapp.R
 import com.equipo10.dogapp.databinding.FragmentAdminCitasBinding
 import com.equipo10.dogapp.view.adapter.ScheduleAdapter
+import com.equipo10.dogapp.viewmodel.DogBreedsViewModel
 import com.equipo10.dogapp.viewmodel.ScheduleViewModel
+import com.equipo10.dogapp.webservice.ApiService
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -23,7 +25,6 @@ class AdminCitasFragment : Fragment() {
 
     private lateinit var binding: FragmentAdminCitasBinding
     private val scheduleViewModel: ScheduleViewModel by viewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -75,8 +76,4 @@ class AdminCitasFragment : Fragment() {
             binding.progress.isVisible = status
         }
     }
-
-
-
-
 }
